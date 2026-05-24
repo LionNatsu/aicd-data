@@ -2,7 +2,7 @@ name: Notify AICD
 
 on:
   push:
-    tags: ['v*']
+    branches: [main]
 
 jobs:
   notify:
@@ -13,5 +13,4 @@ jobs:
           GH_TOKEN: ${{ secrets.PAT_AICD_DISPATCH }}
         run: |
           gh api repos/LionNatsu/aicd/dispatches \
-            -f event_type=aicd-data-updated \
-            -f client_payload[ref]="${{ github.ref_name }}"
+            -f event_type=aicd-data-updated
